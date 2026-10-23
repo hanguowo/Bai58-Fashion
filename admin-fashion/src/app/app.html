@@ -1,0 +1,10 @@
+<header class="topbar">
+  <a routerLink="/fashions" class="brand">FASHION <span>ADMIN</span></a>
+  <nav>
+    <a routerLink="/fashions" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Danh sách</a>
+    <a routerLink="/fashions/new" routerLinkActive="active">Thêm mới</a>
+  </nav>
+</header>
+<main class="container">
+  <router-outlet />
+</main>

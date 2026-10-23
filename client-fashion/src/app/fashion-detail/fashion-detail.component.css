@@ -1,0 +1,31 @@
+.back { display: inline-block; margin: 16px 0; color: #333; }
+.article { max-width: 760px; margin: 0 auto; }
+.style-link {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  color: #888;
+  text-decoration: none;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 8px 0;
+}
+.date { color: #999; font-size: 13px; }
+.cover { width: 100%; max-height: 640px; object-fit: cover; margin: 12px 0 20px; }
+.content {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.content ::ng-deep img { max-width: 100%; height: auto; }
+
+.related { max-width: 960px; margin: 48px auto 0; border-top: 1px solid #ddd; padding-top: 16px; }
+.related h3 { font-weight: 500; letter-spacing: 1px; }
+.related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 700px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
+.related-card { text-decoration: none; color: #111; font-size: 14px; }
+.related-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; margin-bottom: 6px; }

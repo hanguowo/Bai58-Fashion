@@ -1,0 +1,55 @@
+<!-- Thanh tìm kiếm theo Style -->
+<div class="search-bar">
+  <input class="search-input" list="styleOptions" placeholder="Nhập Style..."
+         [(ngModel)]="keyword" (keyup.enter)="search()" />
+  <datalist id="styleOptions">
+    @for (s of styles; track s) {
+      <option [value]="s"></option>
+    }
+  </datalist>
+
+  <select class="search-select" [ngModel]="currentStyle" (ngModelChange)="onSelectStyle($event)">
+    <option value="">Tất cả Style</option>
+    @for (s of styles; track s) {
+      <option [value]="s">{{ s }}</option>
+    }
+  </select>
+
+  <button class="search-btn" (click)="search()">SEARCH</button>
+</div>
+
+@if (currentStyle) {
+  <p class="result-info">
+    Kết quả cho Style: <b>{{ currentStyle }}</b>
+    <a href="" (click)="$event.preventDefault(); clearSearch()">× Xóa bộ lọc</a>
+  </p>
+}
+
+@if (errMessage) {
+  <p class="error">{{ errMessage }}</p>
+}
+
+<!-- Hiển thị Fashion theo nhóm Style -->
+@for (g of groups; track g.style) {
+  <section class="group">
+    <h2 class="group-title"><span>{{ g.style }}</span></h2>
+    <div class="grid">
+      @for (f of g.items; track f._id) {
+        <a class="card" [routerLink]="['/fashion', f._id]">
+          <div class="img-wrap">
+            <img [src]="f.thumbnail || 'no-image.svg'" [alt]="f.fashion_subject" (error)="onImgError($event)" />
+          </div>
+          <p class="card-title">{{ f.fashion_subject }}</p>
+        </a>
+      }
+    </div>
+  </section>
+} @empty {
+  @if (!loading) {
+    <p class="empty">Không tìm thấy Fashion nào{{ currentStyle ? ' thuộc Style "' + currentStyle + '"' : '' }}.</p>
+  }
+}
+
+@if (loading) {
+  <p class="empty">Đang tải...</p>
+}

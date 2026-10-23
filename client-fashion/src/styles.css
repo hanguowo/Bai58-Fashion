@@ -1,0 +1,15 @@
+/* Global styles – client-fashion */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Helvetica Neue", Arial, sans-serif; background: #fff; color: #111; }
+.error { color: #d0021b; background: #fdecee; padding: 8px 12px; text-align: center; }
+
+/* Một số class do CKEditor sinh ra trong field chi tiết */
+.ck-content figure.image { margin: 1em auto; text-align: center; }
+.ck-content figure.image img { max-width: 100%; }
+.ck-content figure.image figcaption { color: #777; font-size: 14px; font-style: italic; }
+.ck-content .image-style-side { float: right; max-width: 50%; margin-left: 1.5em; }
+.ck-content .image_resized { max-width: 100%; }
+.ck-content .image_resized img { width: 100%; }
+.ck-content blockquote { border-left: 4px solid #ccc; margin-left: 0; padding-left: 1em; font-style: italic; }
+.ck-content table { border-collapse: collapse; width: 100%; }
+.ck-content table td, .ck-content table th { border: 1px solid #ccc; padding: 6px; }

@@ -1,0 +1,55 @@
+<div class="toolbar">
+  <h2>Danh sách Fashion</h2>
+  <div class="actions">
+    <select [(ngModel)]="selectedStyle" (change)="loadFashions()">
+      <option value="">-- Tất cả Style --</option>
+      @for (s of styles; track s) {
+        <option [value]="s">{{ s }}</option>
+      }
+    </select>
+    <button class="btn btn-primary" (click)="addNew()">+ Thêm mới Fashion</button>
+  </div>
+</div>
+
+@if (errMessage) {
+  <p class="error">{{ errMessage }}</p>
+}
+
+<table class="grid">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Thumbnail</th>
+      <th>Tiêu đề</th>
+      <th>Style</th>
+      <th>Ngày tạo</th>
+      <th class="center">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (f of fashions; track f._id; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>
+          @if (f.thumbnail) {
+            <img [src]="f.thumbnail" alt="thumbnail" class="thumb" />
+          }
+        </td>
+        <td class="subject">{{ f.fashion_subject }}</td>
+        <td><span class="tag">{{ f.style }}</span></td>
+        <td>{{ f.created_date | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td class="center nowrap">
+          <button class="btn" (click)="viewDetail(f)">Xem</button>
+          <button class="btn btn-warning" (click)="edit(f)">Sửa</button>
+          <button class="btn btn-danger" (click)="remove(f)">Xóa</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" class="center muted">
+          {{ loading ? 'Đang tải...' : 'Chưa có Fashion nào' }}
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

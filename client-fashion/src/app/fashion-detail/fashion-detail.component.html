@@ -1,0 +1,34 @@
+<a routerLink="/" class="back">&larr; Trang chủ</a>
+
+@if (errMessage) {
+  <p class="error">{{ errMessage }}</p>
+}
+
+@if (fashion) {
+  <article class="article">
+    <a class="style-link" [routerLink]="['/']" [queryParams]="{ style: fashion.style }">{{ fashion.style }}</a>
+    <h1>{{ fashion.fashion_subject }}</h1>
+    <p class="date">{{ fashion.created_date | date: 'dd/MM/yyyy' }}</p>
+
+    @if (fashion.thumbnail) {
+      <img class="cover" [src]="fashion.thumbnail" [alt]="fashion.fashion_subject" (error)="onImgError($event)" />
+    }
+
+    <!-- Nội dung chi tiết được nhập bằng WYSIWYG (HTML) -->
+    <div class="content ck-content" [innerHTML]="fashion.fashion_detail | safeHtml"></div>
+  </article>
+
+  @if (related.length) {
+    <section class="related">
+      <h3>Cùng Style "{{ fashion.style }}"</h3>
+      <div class="related-grid">
+        @for (r of related; track r._id) {
+          <a [routerLink]="['/fashion', r._id]" class="related-card">
+            <img [src]="r.thumbnail || 'no-image.svg'" [alt]="r.fashion_subject" (error)="onImgError($event)" />
+            <span>{{ r.fashion_subject }}</span>
+          </a>
+        }
+      </div>
+    </section>
+  }
+}

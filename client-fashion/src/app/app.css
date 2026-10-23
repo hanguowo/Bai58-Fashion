@@ -1,0 +1,8 @@
+.header { text-align: center; padding: 28px 16px 8px; }
+.logo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 44px; letter-spacing: 12px; color: #000; text-decoration: none;
+}
+.tagline { margin: 4px 0 0; color: #888; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 16px 40px; }
+.footer { text-align: center; color: #999; font-size: 12px; padding: 24px; border-top: 1px solid #eee; }

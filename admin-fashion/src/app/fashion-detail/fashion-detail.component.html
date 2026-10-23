@@ -1,0 +1,25 @@
+<a routerLink="/fashions" class="back">&larr; Quay lại danh sách</a>
+
+@if (errMessage) {
+  <p class="error">{{ errMessage }}</p>
+}
+
+@if (fashion) {
+  <div class="card">
+    <div class="head">
+      @if (fashion.thumbnail) {
+        <img [src]="fashion.thumbnail" alt="thumbnail" class="thumb" />
+      }
+      <div>
+        <span class="tag">{{ fashion.style }}</span>
+        <h2>{{ fashion.fashion_subject }}</h2>
+        <p class="muted">Ngày tạo: {{ fashion.created_date | date: 'dd/MM/yyyy HH:mm' }}</p>
+        <p class="muted">Id: {{ fashion._id }}</p>
+        <button class="btn btn-warning" (click)="edit()">Sửa</button>
+        <button class="btn btn-danger" (click)="remove()">Xóa</button>
+      </div>
+    </div>
+    <hr />
+    <div class="ck-content" [innerHTML]="fashion.fashion_detail | safeHtml"></div>
+  </div>
+}

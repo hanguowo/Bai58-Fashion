@@ -1,0 +1,54 @@
+<h2>{{ isEdit ? 'Sửa Fashion' : 'Thêm mới Fashion' }}</h2>
+
+@if (errMessage) {
+  <p class="error">{{ errMessage }}</p>
+}
+
+<form class="card" (ngSubmit)="save()">
+  <div class="row">
+    <label for="fashion_subject">Tiêu đề *</label>
+    <input id="fashion_subject" name="fashion_subject" class="form-control"
+           placeholder="Nhập tiêu đề fashion" [(ngModel)]="fashion.fashion_subject" />
+  </div>
+
+  <div class="row">
+    <label for="style">Style *</label>
+    <!-- Nhập Style mới hoặc chọn Style có sẵn (datalist) -->
+    <input id="style" name="style" class="form-control" list="styleList"
+           placeholder="VD: Street Style" [(ngModel)]="fashion.style" />
+    <datalist id="styleList">
+      @for (s of styles; track s) {
+        <option [value]="s"></option>
+      }
+    </datalist>
+  </div>
+
+  <div class="row">
+    <label>Thumbnail</label>
+    <div class="thumb-box">
+      @if (fashion.thumbnail) {
+        <img [src]="fashion.thumbnail" alt="preview" class="preview" />
+      }
+      <div class="thumb-inputs">
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+        <small class="muted">Chọn file hình (lưu dạng Base64) hoặc dán URL hình bên dưới:</small>
+        <input name="thumbnail" class="form-control" placeholder="https://..."
+               [ngModel]="fashion.thumbnail.startsWith('data:') ? '' : fashion.thumbnail"
+               (ngModelChange)="fashion.thumbnail = $event" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Chi tiết fashion (WYSIWYG)</label>
+    <ckeditor [editor]="Editor" [config]="editorConfig"
+              name="fashion_detail" [(ngModel)]="fashion.fashion_detail"></ckeditor>
+  </div>
+
+  <div class="buttons">
+    <button type="submit" class="btn btn-primary" [disabled]="saving">
+      {{ saving ? 'Đang lưu...' : 'Lưu' }}
+    </button>
+    <button type="button" class="btn" (click)="cancel()">Hủy</button>
+  </div>
+</form>

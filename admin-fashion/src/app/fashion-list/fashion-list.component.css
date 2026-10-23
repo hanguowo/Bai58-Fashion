@@ -1,0 +1,36 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.toolbar h2 { margin: 0; }
+.actions { display: flex; gap: 8px; }
+.grid {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+.grid th,
+.grid td {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+.grid th { background: #111; color: #fff; font-weight: 500; }
+.grid tr:hover td { background: #fafafa; }
+.thumb { width: 64px; height: 80px; object-fit: cover; border-radius: 4px; }
+.subject { font-weight: 600; max-width: 360px; }
+.tag {
+  background: #f1f1f1;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+.center { text-align: center !important; }
+.nowrap { white-space: nowrap; }
+.nowrap .btn { margin: 0 2px; }
+.muted { color: #888; }

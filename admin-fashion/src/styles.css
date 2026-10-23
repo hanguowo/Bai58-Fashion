@@ -1,0 +1,15 @@
+/* Global styles – admin-fashion */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", Roboto, Arial, sans-serif; background: #f4f4f4; color: #222; }
+.btn {
+  padding: 7px 14px; border: 1px solid #ccc; background: #fff; border-radius: 4px;
+  cursor: pointer; font-size: 14px;
+}
+.btn:hover { filter: brightness(0.95); }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.btn-primary { background: #111; color: #fff; border-color: #111; }
+.btn-warning { background: #f5a623; color: #fff; border-color: #f5a623; }
+.btn-danger { background: #d0021b; color: #fff; border-color: #d0021b; }
+.form-control { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; }
+select { padding: 7px 10px; border: 1px solid #ccc; border-radius: 4px; }
+.error { color: #d0021b; background: #fdecee; padding: 8px 12px; border-radius: 4px; }
